@@ -3,7 +3,7 @@
 <suite name="Lord Of the Rings API">
     <test name="API Test">
         <classes>
-            <class name="AppTest"/>
+            <class name="org.api.AppTest"/>
         </classes>
     </test>
 </suite>

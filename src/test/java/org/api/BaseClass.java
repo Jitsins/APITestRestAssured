@@ -11,8 +11,8 @@ import static io.restassured.RestAssured.oauth2;
 public class BaseClass {
     public static String baseURI = "https://the-one-api.dev";
     public static String basePath = "v2";
-    public static String oAuthKey = "#Sign up at https://the-one-api.dev/sign-up to get your API key#";
-    //public static String oAuthKey = "M-b1eJkO6AQxgxJfAAdcZa";
+    //public static String oAuthKey = "#Sign up at https://the-one-api.dev/sign-up to get your API key#";
+    public static String oAuthKey = "M-b1eJkO6AQxgxJfAAdcZa";
 
     //region Request Specifications
     public RequestSpecification getBaseSpecWithAuth() {

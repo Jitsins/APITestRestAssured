@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItems;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -11,9 +12,7 @@ import java.util.*;
 public class AppTest extends BaseClass
 {
     @Test(description = "Verify that the user is able to hit the endpoint 'book' successfully without any authentication")
-    public void verifyEndPointBookWithoutAuth(Method method) {
-        System.out.println("Test Name:        " + method.getName());
-        System.out.println("Method Description: " + method.getAnnotation(Test.class).description());
+    public void verifyEndPointBookWithoutAuth() {
         given()
             .spec(getBaseSpecWithOutAuth())
         .when()
@@ -25,10 +24,7 @@ public class AppTest extends BaseClass
     }
 
     @Test(description = "Verify that the user is able to hit the endpoint 'book' successfully with authentication")
-    public void verifyEndPointBookWithAuth(Method method) {
-        System.out.println("Test Name:        " + method.getName());
-        System.out.println("Method Description: " + method.getAnnotation(Test.class).description());
-
+    public void verifyEndPointBookWithAuth() {
         given()
             .spec(getBaseSpecWithAuth())
         .when()
@@ -40,10 +36,7 @@ public class AppTest extends BaseClass
     }
 
     @Test(description = "Verify all book names and book count in Lord of the rings series")
-    public void verifyBookDetails(Method method) {
-        System.out.println("Test Name:        " + method.getName());
-        System.out.println("Method Description: " + method.getAnnotation(Test.class).description());
-
+    public void verifyBookDetails() {
         List<String> bookNames = new ArrayList<>();
         bookNames.add("The Fellowship Of The Ring");
         bookNames.add("The Return Of The King");
@@ -62,10 +55,7 @@ public class AppTest extends BaseClass
     }
 
     @Test(description = "Verify chapters in Books of Lord of the Rings", dataProvider = "bookChapters")  //Parameterized Test
-    public void verifyBookChapters(String bookId, String chapterId, String chapterName, Method method) {
-        System.out.println("Test Name:        " + method.getName());
-        System.out.println("Method Description: " + method.getAnnotation(Test.class).description());
-
+    public void verifyBookChapters(String bookId, String chapterId, String chapterName) {
         given()
             .spec(getBaseSpecWithOutAuth())
             .pathParam("bookId", bookId)
@@ -78,8 +68,14 @@ public class AppTest extends BaseClass
         System.out.printf("Verified that for BookId: %s and ChapterId: %s, the chapter name must be : %s", bookId, chapterId, chapterName);
     }
 
+    @BeforeMethod
+    public void beforeMethod(Method method){
+        System.out.println("Test Name:        " + method.getName());
+        System.out.println("Method Description: " + method.getAnnotation(Test.class).description());
+    }
+
     @AfterMethod
     public void afterTest(){
-        System.out.println("\n\n");
+        System.out.println("\n");
     }
 }
