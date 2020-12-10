@@ -1,4 +1,4 @@
-package org.api.test;
+package org.api;
 
 /**
  * Hello world!

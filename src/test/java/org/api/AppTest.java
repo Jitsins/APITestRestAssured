@@ -1,4 +1,4 @@
-package org.api.test;
+package org.api;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.CoreMatchers.equalTo;
