@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Lord Of the Rings API">
+    <test name="API Test">
+        <classes>
+            <class name="org.api.test.AppTest"/>
+        </classes>
+    </test>
+</suite>
